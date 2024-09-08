@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - MedTrack</title>
     <style>
+        /* Base Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -50,6 +51,7 @@
             background-color: #FFFFFF; /* White color for the navigation bar */
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             position: relative; /* Not fixed so it scrolls with the content */
+            flex-wrap: wrap; /* Allow navigation items to wrap on smaller screens */
         }
 
         .logo-container {
@@ -69,8 +71,8 @@
             color: #1A4870; /* Dark blue color for text */
             text-decoration: none;
             font-size: 18px;
-            margin: 10px;
-            padding: 10px 20px;
+            margin: 5px; /* Adjusted margin for smaller screens */
+            padding: 10px 15px; /* Adjusted padding for smaller screens */
             border-radius: 5px;
             border: 1px solid #1A4870; /* Dark blue border */
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -95,7 +97,7 @@
         }
 
         .block {
-            width: 80%;
+            width: 90%;
             max-width: 300px;
             height: 200px; /* Set a height for the blocks */
             background-color: #FFFFFF; /* White block color */
@@ -134,6 +136,7 @@
             transform: scale(1.05);
         }
 
+        /* Specific Block Backgrounds */
         .opd-booking {
             background-image: url('./opdf.png'); /* Background image for OPD Booking */
         }
@@ -150,18 +153,26 @@
             background-image: url('./medicine.png'); /* Background image for Medicine Dispensary */
         }
 
+        /* Media Queries */
         @media (max-width: 768px) {
             .header-content h1 {
                 font-size: 36px; /* Smaller font size on mobile */
             }
 
-            .block {
-                width: 90%; /* Increase width for smaller screens */
+            .nav-container a {
+                font-size: 16px; /* Smaller font size for nav links on mobile */
+                padding: 8px 12px; /* Adjusted padding for nav links on mobile */
             }
 
             .logo-container img {
                 width: 50px; /* Adjust logo size on mobile */
                 height: 50px;
+            }
+
+            .block {
+                width: 95%; /* Increased width for blocks on smaller screens */
+                height: 150px; /* Reduced height for blocks on smaller screens */
+                font-size: 16px; /* Adjust font size for blocks on smaller screens */
             }
         }
     </style>
@@ -171,7 +182,7 @@
     <div class="header" id="header">
         <img src="./SIH_MedicalLogo.jpg" alt="MedTrack Logo"> <!-- Image for header background -->
         <div class="header-content" id="headerContent">
-            <!-- Removed Welcome text -->
+            <!-- Welcome text or other content -->
         </div>
     </div>
 
@@ -180,30 +191,29 @@
         <div class="logo-container">
             <img src="./logoo.png" alt="Logo"> <!-- Logo image -->
         </div>
-        <a href="index.html" class="active">Dashboard</a> <!-- Dashboard is highlighted -->
-        <a href="home.html">Home</a> <!-- Link to Home page -->
-        <!-- Removed OPD Management link -->
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="home.html">Home</a>
         <a href="#about-us">About Us</a>
         <a href="#contact-us">Contact Us</a>
-        <a href="profile.html">Profile</a> <!-- Profile link updated to open profile.html -->
+        <a href="profile.html">Profile</a>
     </div>
 
     <!-- Main Content with Blocks -->
     <div class="content">
         <div class="block opd-booking" id="opd-booking" onclick="window.location.href='opd_management.html'">
-            <img src="./opdf.jpg" alt="OPD Booking"> <!-- Updated image for OPD section -->
+            <img src="./opdf.jpg" alt="OPD Booking">
             <div>OPD Booking</div>
         </div>
         <div class="block bed-booking" id="bed-booking" onclick="window.location.href='bed_management.html'">
-            <img src="./bed.png" alt="Bed Booking"> <!-- Image for Bed Booking -->
+            <img src="./bed.png" alt="Bed Booking">
             <div>Bed Booking</div>
         </div>
         <div class="block ambulance" id="ambulance">
-            <img src="./ambu.png" alt="Ambulance"> <!-- Image for Ambulance -->
+            <img src="./ambu.png" alt="Ambulance">
             <div>Ambulance</div>
         </div>
         <div class="block medicine-dispensary" id="medicine-dispensary" onclick="window.location.href='medicine_dispensary.html'">
-            <img src="./medicine.png" alt="Medicine Dispensary"> <!-- Image for Medicine Dispensary -->
+            <img src="./medicine.png" alt="Medicine Dispensary">
             <div>Medicine Dispensary</div>
         </div>
     </div>
