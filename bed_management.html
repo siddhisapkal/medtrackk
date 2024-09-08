@@ -12,14 +12,19 @@
             padding: 0;
         }
 
+        /* Sticky Navbar */
         .nav-container {
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            flex-wrap: wrap;
             align-items: center;
             padding: 10px;
             background-color: #3D52A0; /* Dark blue color for the navigation bar */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            position: fixed; /* Makes the navbar sticky */
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensures it stays on top */
         }
 
         .logo-container {
@@ -58,7 +63,7 @@
 
         h1 {
             text-align: center;
-            margin: 20px 0;
+            margin: 80px 0 20px; /* Added margin-top to ensure content doesn't overlap with the sticky nav */
             color: #3D52A0; /* Dark blue color */
             font-size: 24px; /* Adjust font size for header */
         }
@@ -194,3 +199,4 @@
     </script>
 </body>
 </html>
+
