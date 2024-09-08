@@ -14,11 +14,12 @@
 
         .nav-container {
             display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
             align-items: center;
             padding: 10px;
             background-color: #3D52A0; /* Dark blue color for the navigation bar */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            flex-wrap: wrap;
+            box-sizing: border-box;
         }
 
         .logo-container {
@@ -28,7 +29,7 @@
         }
 
         .logo-container img {
-            width: 50px; /* Smaller logo size for better mobile view */
+            width: 50px; /* Adjusted logo size */
             height: 50px;
             border-radius: 50%;
             margin-right: 10px;
@@ -57,26 +58,27 @@
 
         h1 {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px 0;
             color: #3D52A0; /* Dark blue color */
+            font-size: 24px; /* Adjust font size for header */
         }
 
         .bed-container {
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping for multiple rows */
-            justify-content: center; /* Center align the boxes */
-            margin: 20px;
+            flex-wrap: wrap; /* Allow wrapping of bed categories */
+            justify-content: center;
+            margin: 0 20px; /* Adjust margin */
+            box-sizing: border-box;
         }
 
         .bed-category {
             background-color: #ADBBDA; /* Soft blue background for boxes */
             border: 1px solid #ccc;
             border-radius: 10px;
-            padding: 15px; /* Adjusted padding */
+            padding: 15px;
             margin: 10px;
-            width: 90%; /* Full width on smaller screens */
-            max-width: 300px; /* Max width for larger screens */
-            height: auto; /* Auto height to accommodate content */
+            width: 100%; /* Full width on small screens */
+            max-width: 300px; /* Max width on larger screens */
             text-align: center;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
@@ -90,33 +92,22 @@
         }
 
         .bed-category img {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
             width: 80px; /* Adjusted image size for smaller screens */
             height: 80px;
             border-radius: 50%; /* Circular image */
             object-fit: cover;
-            z-index: 1;
         }
 
         .bed-category div {
-            position: relative;
-            z-index: 2;
             color: #3D52A0; /* Dark blue text color */
             font-weight: bold;
-            font-size: 18px; /* Adjusted text size for better readability */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100% - 100px); /* Adjusted height to fit the text below the image */
-            margin-top: 100px; /* Space for the image above */
+            font-size: 18px; /* Adjusted text size */
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: column; /* Stack navigation links vertically */
+                flex-direction: column; /* Stack navigation items vertically */
                 align-items: center;
             }
 
@@ -124,26 +115,34 @@
                 font-size: 14px; /* Smaller font size for mobile */
                 padding: 8px;
             }
+
+            .bed-category {
+                width: 90%; /* Increased width on smaller screens */
+                max-width: none; /* Remove max width restriction */
+            }
+
+            h1 {
+                font-size: 20px; /* Adjusted header size for mobile */
+            }
         }
 
         @media (max-width: 480px) {
             .logo-container img {
-                width: 40px; /* Even smaller logo for very small screens */
+                width: 40px; /* Smaller logo size */
                 height: 40px;
             }
 
             .bed-category {
-                width: 100%; /* Full width for very small screens */
-                max-width: none; /* Remove max width */
+                width: 100%; /* Full width on very small screens */
             }
 
             .bed-category img {
-                width: 60px; /* Smaller image size for very small screens */
+                width: 60px; /* Smaller image size */
                 height: 60px;
             }
 
             .bed-category div {
-                font-size: 16px; /* Smaller text size for very small screens */
+                font-size: 16px; /* Smaller text size */
             }
         }
     </style>
@@ -154,8 +153,8 @@
         <div class="logo-container">
             <img src="./logoo.png" alt="Logo"> <!-- Logo image -->
         </div>
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="home.html">Home</a>
+        <a href="index.html">Dashboard</a>
         <a href="bed_management.html" class="active">Bed Management</a>
         <a href="profile.html">Profile</a>
     </div>
@@ -195,6 +194,3 @@
     </script>
 </body>
 </html>
-
-
-
