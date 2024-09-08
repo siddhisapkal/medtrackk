@@ -3,53 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - MedTrack</title>
+    <title>Bed Management</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #EDE8F5; /* Very light blue background */
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            background-color: #ADD8E6; /* Light blue background color */
-        }
-
-        .header {
-            position: relative;
-            height: 60vh; /* Initial height */
-            background-color: #1A4870; /* Dark blue color for header */
-            overflow: hidden;
-            transition: height 0.3s ease; /* Smooth transition for height change */
-        }
-
-        .header img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the header area */
-        }
-
-        .header-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffffff;
-            text-align: center;
-            transition: font-size 0.3s ease; /* Smooth transition for font size */
-        }
-
-        .header-content h1 {
-            font-size: 48px; /* Initial font size */
-            margin: 0;
-            font-family: 'Georgia', serif; /* Different font style */
         }
 
         .nav-container {
             display: flex;
-            align-items: center; /* Align items vertically */
+            align-items: center;
             padding: 10px;
-            background-color: #FFFFFF; /* White color for the navigation bar */
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            position: relative; /* Not fixed so it scrolls with the content */
+            background-color: #3D52A0; /* Dark blue color for the navigation bar */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .logo-container {
@@ -59,170 +27,146 @@
         }
 
         .logo-container img {
-            width: 70px; /* Larger size for the logo */
+            width: 70px; /* Adjust logo size */
             height: 70px;
             border-radius: 50%;
-            margin-right: 20px; /* Space between logo and text */
+            margin-right: 20px;
         }
 
         .nav-container a {
-            color: #1A4870; /* Dark blue color for text */
+            color: #EDE8F5; /* Very light blue text */
             text-decoration: none;
             font-size: 18px;
             margin: 10px;
             padding: 10px 20px;
             border-radius: 5px;
-            border: 1px solid #1A4870; /* Dark blue border */
+            border: 1px solid #EDE8F5;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .nav-container a.active {
-            background-color: #1a4b77; /* Dark blue background when active */
+            background-color: #7091E6; /* Light blue background when active */
             color: #FFFFFF; /* White text color when active */
         }
 
         .nav-container a:hover {
-            background-color: #1F316F; /* Dark blue color for hover effect */
-            color: #ADD8E6; /* Light blue background color for text on hover */
+            background-color: #8697C4; /* Medium blue color for hover effect */
+            color: #3D52A0; /* Dark blue text on hover */
         }
 
-        .content {
-            padding: 20px;
-            background-color: #ADD8E6; /* Light blue background for the main content area */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .block {
-            width: 80%;
-            max-width: 300px;
-            height: 200px; /* Set a height for the blocks */
-            background-color: #FFFFFF; /* White block color */
-            color: #1A4870; /* Dark blue text color */
-            margin: 10px 0;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        h1 {
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top: 20px;
+            color: #3D52A0; /* Dark blue color */
+        }
+
+        .bed-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping for multiple rows */
+            justify-content: center; /* Center align the boxes */
+            margin: 20px;
+        }
+
+        .bed-category {
+            background-color: #ADBBDA; /* Soft blue background for boxes */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px; /* Adjusted width for a rectangular appearance */
+            height: 200px; /* Adjusted height for a rectangular appearance */
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: transform 0.2s ease;
             position: relative;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff; /* White text color */
         }
 
-        .block img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(50%); /* Dark filter for images */
-            z-index: 1;
-        }
-
-        .block div {
-            position: relative;
-            z-index: 2;
-        }
-
-        .block:hover {
+        .bed-category:hover {
             transform: scale(1.05);
         }
 
-        .opd-booking {
-            background-image: url('./opdf.png'); /* Background image for OPD Booking */
+        .bed-category img {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            z-index: 1;
         }
 
-        .bed-booking {
-            background-image: url('./bed.png'); /* Background image for Bed Booking */
+        .bed-category div {
+            position: relative;
+            z-index: 2;
+            color: #3D52A0; /* Dark blue text color */
+            font-weight: bold;
+            font-size: 20px; /* Adjusted text size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100% - 120px); /* Adjusted height to fit the text below the image */
+            margin-top: 120px; /* Space for the image above */
         }
 
-        .ambulance {
-            background-image: url('./ambu.png'); /* Background image for Ambulance */
-        }
-
-        .medicine-dispensary {
-            background-image: url('./medicine.png'); /* Background image for Medicine Dispensary */
-        }
-
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 36px; /* Smaller font size on mobile */
-            }
-
-            .block {
-                width: 90%; /* Increase width for smaller screens */
-            }
-
-            .logo-container img {
-                width: 50px; /* Adjust logo size on mobile */
-                height: 50px;
+        @media (max-width: 600px) {
+            .bed-category {
+                width: 90%; /* Full width on smaller screens */
+                height: auto; /* Adjust height on smaller screens */
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Logo -->
-    <div class="header" id="header">
-        <img src="./SIH_MedicalLogo.jpg" alt="MedTrack Logo"> <!-- Image for header background -->
-        <div class="header-content" id="headerContent">
-            <!-- Removed Welcome text -->
-        </div>
-    </div>
-
     <!-- Navigation Menu -->
     <div class="nav-container">
         <div class="logo-container">
             <img src="./logoo.png" alt="Logo"> <!-- Logo image -->
         </div>
-        <a href="index.html" class="active">Dashboard</a> <!-- Dashboard is highlighted -->
-        <a href="home.html">Home</a> <!-- Link to Home page -->
-        <a href="bed_management.html">Bed Management</a> <!-- Link to Bed Management page -->
-        <a href="#about-us">About Us</a>
-        <a href="#contact-us">Contact Us</a>
-        <a href="profile.html">Profile</a> <!-- Profile link updated to open profile.html -->
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="bed_management.html" class="active">Bed Management</a>
+        <a href="profile.html">Profile</a>
     </div>
 
-    <!-- Main Content with Blocks -->
-    <div class="content">
-        <div class="block opd-booking" id="opd-booking" onclick="window.location.href='opd_management.html'">
-            <img src="./opdf.jpg" alt="OPD Booking"> <!-- Updated image for OPD section -->
-            <div>OPD Booking</div>
+    <h1>Bed Management</h1>
+    <div class="bed-container">
+        <!-- Category for General Ward -->
+        <div class="bed-category" onclick="filterBeds('general')">
+            <img src="general.png" alt="General Ward"> <!-- Circular image for General Ward -->
+            <div>General Ward</div>
         </div>
-        <div class="block bed-booking" id="bed-booking" onclick="window.location.href='bed_management.html'">
-            <img src="./bed.png" alt="Bed Booking"> <!-- Image for Bed Booking -->
-            <div>Bed Booking</div>
+
+        <!-- Category for ICU Ward -->
+        <div class="bed-category" onclick="filterBeds('icu')">
+            <img src="ICU.png" alt="ICU Ward"> <!-- Circular image for ICU Ward -->
+            <div>ICU</div>
         </div>
-        <div class="block ambulance" id="ambulance">
-            <img src="./ambu.png" alt="Ambulance"> <!-- Image for Ambulance -->
-            <div>Ambulance</div>
-        </div>
-        <div class="block medicine-dispensary" id="medicine-dispensary" onclick="window.location.href='medicine_dispensary.html'">
-            <img src="./medicine.png" alt="Medicine Dispensary"> <!-- Image for Medicine Dispensary -->
-            <div>Medicine Dispensary</div>
+
+        <!-- Category for Private Room -->
+        <div class="bed-category" onclick="filterBeds('private')">
+            <img src="private.png" alt="Private Room"> <!-- Circular image for Private Room -->
+            <div>Special Ward</div>
         </div>
     </div>
 
     <script>
-        window.onscroll = function() {
-            var header = document.getElementById('header');
-            var headerContent = document.getElementById('headerContent');
-
-            if (window.pageYOffset > 50) {
-                header.style.height = '30vh'; /* Reduce height when scrolled */
-                headerContent.style.fontSize = '24px'; /* Reduce font size when scrolled */
-            } else {
-                header.style.height = '60vh'; /* Default height */
-                headerContent.style.fontSize = '48px'; /* Default font size */
+        function filterBeds(category) {
+            // Redirect to the corresponding hospital page based on the category
+            if (category === 'general') {
+                window.location.href = 'general_ward_hospitals.html'; // Change to the correct URL for General Ward hospitals
+            } else if (category === 'icu') {
+                window.location.href = 'icu_hospitals.html'; // Change to the correct URL for ICU hospitals
+            } else if (category === 'private') {
+                window.location.href = 'private_hospitals.html'; // Change to the correct URL for Private Ward hospitals
             }
-        };
+        }
     </script>
 </body>
 </html>
+
 
 
