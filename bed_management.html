@@ -18,6 +18,7 @@
             padding: 10px;
             background-color: #3D52A0; /* Dark blue color for the navigation bar */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -27,18 +28,18 @@
         }
 
         .logo-container img {
-            width: 70px; /* Adjust logo size */
-            height: 70px;
+            width: 50px; /* Smaller logo size for better mobile view */
+            height: 50px;
             border-radius: 50%;
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
         .nav-container a {
             color: #EDE8F5; /* Very light blue text */
             text-decoration: none;
-            font-size: 18px;
-            margin: 10px;
-            padding: 10px 20px;
+            font-size: 16px; /* Adjusted font size for smaller screens */
+            margin: 5px;
+            padding: 8px 15px;
             border-radius: 5px;
             border: 1px solid #EDE8F5;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -71,10 +72,11 @@
             background-color: #ADBBDA; /* Soft blue background for boxes */
             border: 1px solid #ccc;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px; /* Adjusted padding */
             margin: 10px;
-            width: 300px; /* Adjusted width for a rectangular appearance */
-            height: 200px; /* Adjusted height for a rectangular appearance */
+            width: 90%; /* Full width on smaller screens */
+            max-width: 300px; /* Max width for larger screens */
+            height: auto; /* Auto height to accommodate content */
             text-align: center;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
@@ -89,11 +91,11 @@
 
         .bed-category img {
             position: absolute;
-            top: 20px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
+            width: 80px; /* Adjusted image size for smaller screens */
+            height: 80px;
             border-radius: 50%; /* Circular image */
             object-fit: cover;
             z-index: 1;
@@ -104,18 +106,44 @@
             z-index: 2;
             color: #3D52A0; /* Dark blue text color */
             font-weight: bold;
-            font-size: 20px; /* Adjusted text size */
+            font-size: 18px; /* Adjusted text size for better readability */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100% - 120px); /* Adjusted height to fit the text below the image */
-            margin-top: 120px; /* Space for the image above */
+            height: calc(100% - 100px); /* Adjusted height to fit the text below the image */
+            margin-top: 100px; /* Space for the image above */
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column; /* Stack navigation links vertically */
+                align-items: center;
+            }
+
+            .nav-container a {
+                font-size: 14px; /* Smaller font size for mobile */
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container img {
+                width: 40px; /* Even smaller logo for very small screens */
+                height: 40px;
+            }
+
             .bed-category {
-                width: 90%; /* Full width on smaller screens */
-                height: auto; /* Adjust height on smaller screens */
+                width: 100%; /* Full width for very small screens */
+                max-width: none; /* Remove max width */
+            }
+
+            .bed-category img {
+                width: 60px; /* Smaller image size for very small screens */
+                height: 60px;
+            }
+
+            .bed-category div {
+                font-size: 16px; /* Smaller text size for very small screens */
             }
         }
     </style>
